@@ -1,5 +1,6 @@
 import React from "react";
 import SignOutButton from "../components/SignOutButton";
+import PhotoUploader from "../components/PhotoUploader";
 
 const Photos = () => {
   return (
@@ -7,7 +8,7 @@ const Photos = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex flex-col items-center mb-6">
           <h1 className="text-4xl font-bold mb-4">Photos</h1>
-          {/* photo loaded component */}
+          <PhotoUploader />
         </div>
         {/* photo grid */}
       </div>
