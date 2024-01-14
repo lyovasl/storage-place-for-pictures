@@ -1,6 +1,7 @@
 import React from "react";
 import SignOutButton from "../components/SignOutButton";
 import PhotoUploader from "../components/PhotoUploader";
+import PhotoGrid from "../components/PhotoGrid";
 
 const Photos = () => {
   return (
@@ -10,7 +11,7 @@ const Photos = () => {
           <h1 className="text-4xl font-bold mb-4">Photos</h1>
           <PhotoUploader />
         </div>
-        {/* photo grid */}
+        <PhotoGrid />
       </div>
       <div className="absolute top-4 right-4">
         <SignOutButton />
