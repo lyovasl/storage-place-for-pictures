@@ -3,7 +3,7 @@ import { useState } from "react";
 import { supabase } from "../utils/supabaseClient";
 import { useRouter } from "next/navigation";
 
-export default function AuthForm() {
+const AuthForm = () => {
   const [isNewUser, setIsNewUser] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,7 +11,7 @@ export default function AuthForm() {
   const [isSigningUp, setIsSigningUp] = useState(false);
   const router = useRouter();
 
-  async function handleLogin(e) {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     setIsSigningIn(true);
@@ -26,9 +26,9 @@ export default function AuthForm() {
     } else {
       setIsSigningIn(false);
     }
-  }
+  };
 
-  async function handleSingUp(e) {
+  const handleSingUp = async (e) => {
     e.preventDefault();
     const { data, error } = await supabase.auth.signUp({
       email,
@@ -38,7 +38,7 @@ export default function AuthForm() {
       setIsSigningUp(true);
     }
     console.log({ data, error });
-  }
+  };
 
   let signInMessage = "Sign In";
 
@@ -109,4 +109,6 @@ export default function AuthForm() {
       {isSigningUp && signUpMessage}
     </form>
   );
-}
+};
+
+export default AuthForm;

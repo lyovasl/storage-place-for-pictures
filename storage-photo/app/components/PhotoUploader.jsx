@@ -3,11 +3,11 @@ import { useState } from "react";
 import { supabase } from "../utils/supabaseClient";
 import { useRouter } from "next/navigation";
 
-export default function PhotoUploader() {
+const PhotoUploader = () => {
   const [uploading, setUploading] = useState(false);
   const router = useRouter();
 
-  async function handleFileUpload(event) {
+  const handleFileUpload = async (event) => {
     try {
       setUploading(true);
 
@@ -44,7 +44,7 @@ export default function PhotoUploader() {
     } finally {
       setUploading(false);
     }
-  }
+  };
 
   return (
     <label
@@ -61,4 +61,6 @@ export default function PhotoUploader() {
       />
     </label>
   );
-}
+};
+
+export default PhotoUploader;

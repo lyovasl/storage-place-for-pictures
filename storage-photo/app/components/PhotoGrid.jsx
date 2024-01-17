@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import Photo from "./Photo";
 import { cookies } from "next/headers";
 
-async function fetchUserPhotos(user, supabaseServer) {
+const fetchUserPhotos = async (user, supabaseServer) => {
   if (!user) return;
 
   const folderPath = `user_uploads/${user.id}/`;
@@ -15,9 +15,9 @@ async function fetchUserPhotos(user, supabaseServer) {
     return;
   }
   return data;
-}
+};
 
-async function getPhotoUrls(photos, user, supabaseServer) {
+const getPhotoUrls = async (photos, user, supabaseServer) => {
   return Promise.all(
     photos.map(async (photo) => {
       const { data, error } = await supabaseServer.storage
@@ -30,9 +30,9 @@ async function getPhotoUrls(photos, user, supabaseServer) {
       return { url: data.signedUrl, photoName: photo.name };
     })
   );
-}
+};
 
-async function fetchFavoritePhotos(user, supabaseServer) {
+const fetchFavoritePhotos = async (user, supabaseServer) => {
   const { data, error } = await supabaseServer
     .from("favorites")
     .select("photo_name")
@@ -43,9 +43,9 @@ async function fetchFavoritePhotos(user, supabaseServer) {
     return [];
   }
   return data.map((favorite) => favorite.photo_name);
-}
+};
 
-export default async function PhotoGrid({ favorites = false }) {
+const PhotoGrid = async ({ favorites = false }) => {
   const cookieStore = cookies();
 
   const supabaseServer = createServerClient(
@@ -91,4 +91,6 @@ export default async function PhotoGrid({ favorites = false }) {
       ))}
     </div>
   );
-}
+};
+
+export default PhotoGrid;
