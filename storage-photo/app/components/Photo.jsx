@@ -5,7 +5,7 @@ import { useState } from "react";
 import PhotoModal from "./PhotoModal";
 import { Delete, Favorite, FavoriteBorder } from "@mui/icons-material";
 import { deletePhoto } from "../actions/deletePhoto";
-import { addOrRemoveFromFavorites } from "../actions/addOrRemoveFormFavorite";
+import { addOrRemoveFromFavorites } from "../actions/addOrRemoveFormFavorites";
 
 const Photo = ({ src, alt, width, height, photoName, isFavorited = false }) => {
   const [showModal, setShowModal] = useState(false);
